@@ -2,7 +2,7 @@ var print = s => console.log(s)
 
 
 
-class game
+class Game
 {
   constructor(uid="ADD UID GENERATOR", dim=[3,3])
   {
@@ -22,9 +22,19 @@ class game
   {
     if(role == 0) { this.players[0] = name } // 0: X
     if(role == 1) { this.players[1] = name } // 1: O
+
+    return this;
   }
   
-  addPlayer(name) { if(this.players.length < 2) { this.setPlayer(name, this.players.length) } else {print("cannot add more than 2 players");return false} }
+  addPlayer(name)
+  { 
+    if(this.players.length < 2)
+      this.setPlayer(name, this.players.length);
+    else
+      print("cannot add more than 2 players");
+
+    return this;
+  }
   
   // --- Move
   
@@ -79,7 +89,7 @@ class game
     
     let result = "-"
     if(winner.length > 0) result = winner[0]
-    else { if(this.move >= this.dim[0] * this.dim[1]) result = "draw" }
+    else { if(this.moveIndex >= this.dim[0] * this.dim[1]) result = "draw" }
     
     this.winner = result
     
@@ -96,7 +106,7 @@ class game
   }
   
   
-  // --- main
+  // --- Main
   
   gameInfo()
   {
