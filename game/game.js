@@ -13,7 +13,7 @@ class game
     this.Xturn = true
     this.moveIndex = 0
     // this.moves = []
-    this.winner = "-"
+    this.winner = "-" // values = ["X", "O", "draw", "-"] where "-" mean game pending
   }
   
   // --- Players
@@ -28,9 +28,9 @@ class game
   
   // --- Move
   
-  get(at) { return this.board[at[0]][at[1]] }
-  
   setMove(role, at) { this.board[at[0]][at[1]] = role == "X" ? 1 : 2 }
+  
+  get(at) { return this.board[at[0]][at[1]] }
   
   isTurn(role) { return (this.Xturn && role=="X") || (!this.Xturn && role=="O") }
   
@@ -86,7 +86,7 @@ class game
     return {
       "game": this.unique_id,
       "move": {"index": this.moveIndex, "role":r, "pos":at},
-      "winner": result,
+      "winner": result, // ["X", "O", "draw", "-"]
       "win_index": {
         "row":index[0],
         "col":index[1],
