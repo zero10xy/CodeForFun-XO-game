@@ -1,0 +1,47 @@
+:root 
+{
+  
+}
+
+body { margin: 0; }
+
+.screen { width: 100vw; height: 250px; outline: 1px solid grey; }
+.xo { /*font*/ }
+
+.strong_head { font-size: 46px; margin:4px }
+.head { font-size: 24px; margin:4px }
+.strong_body { font-size: 18px; }
+.body { font-size: 12px; }
+
+.button { width: 160px; height: 38px; border-radius: 15px; }
+.button:hover { outline: 1px solid grey; }
+
+input { all: unset; }
+.text_view { min-width: 150px; height:30px; outline: .5px solid black; text-align: center; }
+
+.bold { font-weight: bold; }
+.centre { display: flex; flex-direction: column; justify-content: center; align-items: center; }
+.centreH { display: flex; flex-direction: row; justify-content: center; align-items: center; }
+
+
+.debug { background-color: #ababab59; outline: 1px solid black; }
+.hide { display: none; visibility: hidden; }
+
+.green { background-color: #a4fd7f; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
