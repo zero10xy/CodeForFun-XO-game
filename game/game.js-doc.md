@@ -85,16 +85,16 @@ g.gameInfo()
 
 # Detailed
 
-## Varibales :-
+## Varibales:
 ```js
 board : [[000][000][000]]
 players : []  // ['X-name', 'O-name']
 Xturn : true  // is X's turn or not
 moveIndex : 0 // increment (++) after each move
-winner : '-'  // X, O, draw, and '-' mean game pending
+winner : '-'  // X, O, draw, and '-' means game pending
 ```
 
-## Coordinate System :-
+## Coordinate System:
 ```js
 at = [0,1] // (y: 0, x: 1) // position
 ```
@@ -113,7 +113,7 @@ indexes :        values :
 ```
 
 
-## Functions :-
+## Functions:
 ```js
 setPlayer(name, role) // role { 0: X, 1: O }
 addPlayer(name)       // start from X then O
@@ -140,7 +140,7 @@ eg3. [0,0,0] : '-'
 checkRows(arr) - checkLine for each rows
 [0,1,2] <- Checks
 [1,1,1] <- Each
-[2,2,0] <- Rows
+[2,2,0] <- Row
 returned : ['-', 'X', '-']
 ```
 
