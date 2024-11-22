@@ -127,58 +127,37 @@ constructor(uid="ADD UID GENERATOR", dim=[3,3])
         }
         else return false
     }
-    
-    debugMove(r, at) { print(this.makeMove(r, at)) }
-    
 }
 
 
 
 
+// 
 /* debug
 
-g = new game()
+g = new Game()
 
 g.addPlayer("player1")
 g.addPlayer("player2")
 
-g.debugMove("X", [0,1])
-g.debugMove("O", [0,2])
+print( g.makeMove("X", [0,1]) )
+print( g.makeMove("O", [0,2]) )
 
-g.debugMove("X", [1,1])
-g.debugMove("O", [1,2])
+print( g.makeMove("X", [1,1]) )
+print( g.makeMove("O", [1,2]) )
 
-g.debugMove("X", [2,1])
-g.debugMove("O", [2,2])
+print( g.makeMove("X", [2,1]) )
+print( g.makeMove("O", [2,2]) )
 
-g.debugMove("X", [1,1])
-g.debugMove("O", [1,2])
+print( g.makeMove("X", [1,1]) )
+print( g.makeMove("O", [1,2]) )
 
-print(g.board)
-print(g.gameInfo())
+print( {"board": g.board} )
+print( {"gameInfo": g.gameInfo()} )
 
-*/
-
-
-
-// optimization - 
-// only check rows and cols connected to position X & O placed
-// find which diag index fall in (isOver()->diag) - function whichDiag(at) { let first = false, second = false; if(at[0] == at[1]) {first = true}; if((at[0] + at[1]) == this.board.length) {second = true}     if(first && second) return null; if(first) {return 0} if(second) {return 1} return -1; }
+// */
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// optimization - // only check rows and cols connected to position X & O placed // find which diag index fall in (isOver()->diag) - function whichDiag(at) { let first = false, second = false; if(at[0] == at[1]) {first = true}; if((at[0] + at[1]) == this.board.length) {second = true}     if(first && second) return null; if(first) {return 0} if(second) {return 1} return -1; }
 
