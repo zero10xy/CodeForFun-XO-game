@@ -15,6 +15,7 @@ class Game
     this.details = {
       "unique_id"  : "",
       "player_id": "",
+      "role": 0 // 0:X, 1:O
     }
   }
   
@@ -27,37 +28,58 @@ class Game
     
     this.state = this.request_play(this.details)
     
-    if(true)
-    {
-      this.ui.loadBoard()
-    }
+    if(true) this.ui.loadBoard()
   }
   
+  // --- game
   
-  setHeading()
+  move(y, x)
   {
-    let d = this.state
-    let s = ""
-    if(d.winner == "-") s = (d.yourTurn ? "Your" : d.opponent()) + " Turn:"
-    else s = d.winner + " Win!"
-    this.ui.setHeading(s)
+    if(this.state.yourTurn && this.state.winner == "-")
+    {
+      this.ui.move(this.details.role, [y, x]) // speed
+      this.state = this.request_move([y, x])
+      this.updateUi()
+    }
   }
   
   // --- html request
   
   request_game()
   {
-    
+    return this.details
   }
   
   request_play(details)
   {
-    
+    return this.state
   }
   
   request_move(move)
   {
-    
+    return this.state
+  }
+  
+  // --- ui
+  
+  updateUi()
+  {
+    this.setHeading();
+    // this.updateBoard();
+  }
+  
+  setHeading()
+  {
+    let d = this.state
+    let s = ""
+    if(d.winner == "-") s = (d.yourTurn ? "Your" : d.opponent()) + " Turn:"
+    else s = d.winner + (d.winner != "draw") ? " Win!" : "Draw!"
+    this.ui.setHeading(s)
+  }
+  
+  updateBoard()
+  {
+    this.ui.updateBoard(this.state.board);
   }
   
 }

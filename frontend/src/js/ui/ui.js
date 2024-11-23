@@ -72,16 +72,29 @@ class ui
       let square = document.createElement("div")
       square.className = "square"
       square.setAttribute("squareId", `${(i/3)|0},${i%3}` )
-      square.addEventListener('click', e => 
-        print(e.target.getAttribute('squareId'))
-      )
+      square.addEventListener('click', e => this.squareClick(e) )
       board.appendChild(square)
     }
   }
   
+  squareClick(e)
+  {
+    let i = e.target.getAttribute('squareId'); if(!i) return
+    let y = parseInt(i.split(",")[0])
+    let x = parseInt(i.split(",")[1])
+    this.game.move(y, x)
+  }
+  
+  move(c, yx)
+  {
+    let contents = XandO[c+1] // 0:blank, 1:X, 2:O
+    let square = document.getElementById("board").querySelector(`[squareId="${yx[0]},${yx[1]}"]`)
+    square.innerHTML = contents
+  }
+  
   updateBoard(arr=[[0,0,0],[0,0,0],[0,0,0]])
   {
-    let contents = XandO // 0:blank, 1:X, 2:O
+    let contents = XandO
     
     let board = document.getElementById("board");
     
