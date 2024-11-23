@@ -1,3 +1,12 @@
+
+var scripts = {
+  "newGame"        : "page.playerName()",
+  "addPlayerName"  : "page.addPlayerName(); page.requestGame()",
+  "playAgain"      : "page.requestGame()",
+  "exit"           : "page.home()"
+}
+
+
 var routes = {
 
   "home": `
@@ -7,21 +16,21 @@ var routes = {
     <div class="xo strong_head bold">XO game</div>
     <div class="xo body bold">(v1.0)</div>
     <div style="height: 30px;"></div>
-    <div class="xo body button green center" onclick="playerName()">Start a New Game Now</div>
+    <div class="xo body button green center" onclick="${scripts['newGame']}">Start a New Game Now</div>
   </div>
   
   `,
   
-  "playerName": `
+  "playerName": (playerName) => `
   
   <!-- Player Name -->
   <div class="display center XO_playerName">
     <div class="xo head bold">Your Player Name:</div>
     <div style="height: 15px;"></div>
     <form id="player_info" class="center">
-      <input type="text" id="player_name" name="player_name" class="text_view strong_body bold center">
+      <input value="${playerName}" type="text" id="player_name" name="player_name" class="text_view strong_body bold center">
       <div style="height: 20px;"></div>
-      <div class="xo body button green center" onclick="requestGame()">Next</div>
+      <div class="xo body button green center" onclick="${scripts['addPlayerName']}">Next</div>
     </form>
   </div>
   
@@ -40,7 +49,7 @@ var routes = {
   
   `,
   
-  "game": (url) => `
+  "game": `
   
   <!-- Game -->
   <div class="display center XO_game">
@@ -51,9 +60,9 @@ var routes = {
     
     <div style="height: 15px;"></div>
     <div id="game_buttons" class="centerH hide">
-      <div class="xo body button green center" onclick="startGame(${url})">Play Again</div>
+      <div class="xo body button green center" onclick="${scripts['playAgain']}">Play Again</div>
       <div style="width: 15px;"></div>
-      <div class="xo body button green center" onclick="home()">Exit</div>
+      <div class="xo body button green center" onclick="${scripts['exit']}">Exit</div>
     </div>
   </div>
   
