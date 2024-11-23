@@ -1,4 +1,3 @@
-var print = s => console.log(s)
 
 var page = new ui() // name (page) used in other files
 

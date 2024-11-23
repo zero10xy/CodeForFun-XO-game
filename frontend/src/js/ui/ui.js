@@ -1,9 +1,8 @@
 
+var print = s => console.log(s)
 var dom     = c => document.createRange().createContextualFragment(c)
 var copyURL = s => navigator.clipboard.writeText(s)
 
-
-// --- ui scripts
 
 class ui
 {
@@ -12,6 +11,7 @@ class ui
     this.screen = document.getElementById("screen")
     this.url = "/"
     this.player_name = ""
+    this.game = new Game(this)
     this.home()
   }
   
@@ -20,6 +20,8 @@ class ui
     this.screen.innerHTML = "";
     this.screen.appendChild(elem) 
   }
+  
+  // --- button scripts
   
   home()
   {
@@ -38,38 +40,26 @@ class ui
     let name = document.querySelector('#player_name').value
     
     this.player_name = name;
-    
-    // Fetch Here to get url
-    
   }
   
   requestGame()
   {
-    var url = "test"
+    let url = "test" // Fetch Here to get url
     this.url = url
-    let html = routes["waitingForPlayer"](url)
     
+    let html = routes["waitingForPlayer"](url)
     this.setScreenView(dom(html))
     
-    this.startGame()
+    this.game.start()
   }
   
-  startGame()
-  {
-    // loop Fetch
-    let game_found = true
-    if(game_found)
-    {
-      this.game()
-    }
-  }
+  // --- game UI
   
-  game()
+  loadBoard()
   {
     let html = routes["game"]
     this.setScreenView(dom(html))
-    this.generateSquares()
-    document.querySelector("#game_buttons").classList.remove("hide")
+    this.generateSquares()    
   }
   
   generateSquares(dim=[3,3])
@@ -81,11 +71,40 @@ class ui
     {
       let square = document.createElement("div")
       square.className = "square"
-      square.setAttribute("squareId", [(i/3) | 0, i%3])
+      square.setAttribute("squareId", `${(i/3)|0},${i%3}` )
       square.addEventListener('click', e => 
         print(e.target.getAttribute('squareId'))
       )
       board.appendChild(square)
     }
   }
+  
+  updateBoard(arr=[[0,0,0],[0,0,0],[0,0,0]])
+  {
+    let contents = XandO // 0:blank, 1:X, 2:O
+    
+    let board = document.getElementById("board");
+    
+    for(let y=0; y < arr.length; y++)
+    {
+      for(let x=0; x < arr.length; x++)
+      {
+        let square = board.querySelector(`[squareId="${y},${x}"]`);
+        square.innerHTML = ""
+        let c = dom(contents[arr[y][x]])
+        square.appendChild(c)
+      }
+    }
+  }
+  
+  setHeading(s)
+  {
+    document.querySelector("#game_info").innerHTML = s
+  }
+  
+  gameOver()
+  {
+    document.querySelector("#game_buttons").classList.remove("hide")
+  }
+  
 }

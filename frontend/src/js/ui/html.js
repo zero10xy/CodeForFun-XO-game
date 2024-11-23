@@ -68,3 +68,10 @@ var routes = {
   
   `
 }
+
+
+var XandO = [
+  "<div></div>",  // 0: blank
+  "<div>×</div>", // 1: X
+  "<div>○</div>"  // 2: O
+]
