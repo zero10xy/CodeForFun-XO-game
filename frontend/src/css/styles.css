@@ -1,6 +1,6 @@
 :root 
 {
-  
+    
 }
 
 * { user-select: none; }
@@ -30,29 +30,29 @@ input { all: unset; }
 
 .board
 {
-  width: 90px;
-  height: 90px;
-  
-  overflow: hidden;
-  clip-path: inset(0);
-  
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: space-between;
-  
+    width: 90px;
+    height: 90px;
+    
+    overflow: hidden;
+    clip-path: inset(0);
+    
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: space-between;
+    
 }
 
 .square
 {
-  width: 30px;
-  height: 30px;
-  outline: 1.2px solid black;
-  
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    width: 30px;
+    height: 30px;
+    outline: 1.2px solid black;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .debug { background-color: #ababab59; outline: 1px solid black; }
