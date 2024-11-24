@@ -7,7 +7,7 @@ var scripts = {
     
     "waitingForPlayer"  : "page.requestGame()", //
     "playAgain"         : "page.play_again()",
-    "exit"              : "page.home()"
+    "exit"              : "page.endGame()"
 }
 
 

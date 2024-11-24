@@ -25,6 +25,22 @@ class Game
         this.request_game()
     }
     
+    reset()
+    {
+        this.state = {
+            "opponent": "player_name",
+            "board" : [[],[],[]],
+            "yourTurn": false,
+            "winner": "-"
+        }
+        
+        this.details = {
+            "unique_id" : "",
+            "player_id": "",
+            "role": ""
+        }
+    }
+    
     // --- game
     
     move(y, x)

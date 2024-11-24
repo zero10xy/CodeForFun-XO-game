@@ -59,19 +59,32 @@ class ui
         this.game.request_status()
     }
     
+    endGame()
+    {
+        this.reset()
+        this.game.reset()
+        this.home()
+    }
+    
     // --- game UI
+    
+    reset()
+    {
+        this.resetUrl()
+        this.url = ""
+    }
     
     getUrlGameId()
     {
-        const url = new URL(window.location.href);
-        const uid = url.searchParams.get('game');
+        let url = new URL(window.location.href);
+        let uid = url.searchParams.get('game');
         return uid || "";
     }
     
     setUrlGameId(uid) {
-        let currentUrl = new URL(window.location.href);
-        currentUrl.searchParams.set('game', uid);
-        window.history.pushState({}, '', currentUrl);
+        let curl = new URL(window.location.href);
+        curl.searchParams.set('game', uid);
+        window.history.pushState({}, '', curl);
         this.setUrlView(window.location.href)
     }
     
@@ -80,6 +93,13 @@ class ui
         let linkView = document.querySelector("#game_link")
         if(linkView) linkView.innerHTML = url
         this.url = url
+    }
+    
+    resetUrl()
+    {
+        let url = window.location.href;
+        url = url.split('?')[0];
+        window.history.replaceState({}, document.title, url);
     }
     
     loadBoard()
