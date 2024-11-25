@@ -32,7 +32,7 @@ var routes = {
         <div class="xo head bold">Your Player Name:</div>
         <div style="height: 15px;"></div>
         <form id="player_info" class="center">
-            <input value="${playerName}" type="text" id="player_name" name="player_name" class="text_view strong_body bold center">
+            <input value="${playerName}" maxlength="20" type="text" id="player_name" name="player_name" class="text_view strong_body bold center">
             <div style="height: 20px;"></div>
             <div class="xo body button green center" onclick="${scripts['addPlayerName']}">Next</div>
         </form>

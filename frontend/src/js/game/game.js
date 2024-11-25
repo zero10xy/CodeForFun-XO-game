@@ -1,4 +1,4 @@
-sleep = (ms=1000) => new Promise(resolve => setTimeout(resolve, ms));
+sleep = (ms=request_frequency) => new Promise(resolve => setTimeout(resolve, ms));
 
 
 class Game

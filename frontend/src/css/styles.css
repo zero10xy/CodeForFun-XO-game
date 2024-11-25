@@ -22,7 +22,7 @@ body { margin: 0; }
 .button:hover { outline: 1px solid grey; }
 
 input { all: unset; }
-.text_view { min-width: 150px; height:30px; outline: .5px solid black; text-align: center; }
+.text_view { min-width: 150px; max-width:90vw; padding: 0 15px; height:30px; outline: .5px solid black; text-align: center; overflow: scroll; }
 
 .bold { font-weight: bold; }
 .center { display: flex; flex-direction: column; justify-content: center; align-items: center; }

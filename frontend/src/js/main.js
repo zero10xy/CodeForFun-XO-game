@@ -1,4 +1,5 @@
 
+var request_frequency = 1000; // 1s per req
 var page = new ui() // name (page) used in other files
 
 
