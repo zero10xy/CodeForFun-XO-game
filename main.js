@@ -15,7 +15,7 @@ const games = new xo();
 
 // --- frontend
 
-app.use(express.static(path.join(__dirname, './frontend')));
+app.use(express.static(path.join(__dirname, './public')));
 
 // --- Endpoints
 
