@@ -1,12 +1,20 @@
 const express = require("express");
 const path = require('path');
 
+const https = require('https');
+const fs = require('fs');
+
 const app = express();
 
 // --- configs
 
 const PORT = process.env.PORT || 3000;
 app.use(express.json())
+
+const options = { 
+    key: fs.readFileSync('./keys/key.pem'),
+    cert: fs.readFileSync('./keys/cert.pem'),
+}; 				  // Load SSL certificates
 
 // --- imports
 
@@ -67,7 +75,6 @@ app.post('/move', (req, res) => {
 
 // --- Runs
 
-app.listen(PORT, async (error) => {
-    if (error) { console.log(error); }
-    console.log(`Server listening on port ${PORT}`);
+https.createServer(options, app).listen(PORT, () => {
+  console.log('HTTPS Server running at PORT', PORT);
 });
