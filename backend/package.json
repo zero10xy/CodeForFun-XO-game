@@ -4,7 +4,8 @@
   "description": "X and O game made in collaboration",
   "main": "main.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "genKeys": "openssl genrsa -out keys/key.pem 2048 && openssl req -new -key keys/key.pem -out keys/csr.pem -subj '/CN=localhost' && openssl x509 -req -days 365 -in keys/csr.pem -signkey keys/key.pem -out keys/cert.pem"
   },
   "repository": {
     "type": "git",
